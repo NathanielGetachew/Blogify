@@ -4,36 +4,61 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    title: {
       type: String,
       required: true,
     },
-    email: {
+    image: {
+      type: String,
+      default: "",
+    },
+    claps: {
+      type: Number,
+      default: 0,
+    },
+    content: {
       type: String,
       required: true,
     },
-    username: {
-      type: String,
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "User",
     },
-    role: {
-      type: String,
-      require: true,
-      enum: ["user", "admin"],
-      default: "user",
+    shares: {
+      type: Number,
+      default: 0,
     },
-    password: {
-      type: String,
+    postViews: {
+      type: Number,
+      default: 0,
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "Category",
     },
-    lastLogin: {
+    schuduledPublished: {
       type: Date,
-      default: Date.now,
+      default: null,
     },
-    isverified: {
-      type: String,
-      default: false,
+    postViews: {
+      type: Number,
+      default: 0,
     },
+    likes: {
+      type: mongooose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    dislikes: {
+      type: mongooose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    comments: {
+      type: mongooose.Schema.Types.ObjectId,
+      ref: "Comments",
+    },
+
     accountLevel: {
       type: String,
       enum: ["bronze", "silver", "gold"],
